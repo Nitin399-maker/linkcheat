@@ -12,7 +12,6 @@ Required environment variables / GitHub Secrets:
   LINKEDIN_ACCESS_TOKEN  — OAuth 2.0 token (w_member_social + r_liteprofile)
   LINKEDIN_PERSON_URN    — e.g. "urn:li:person:XXXXXXXX"
   OPENAI_API_KEY         — OR —
-  GEMINI_API_KEY         — at least one LLM key must be set
 
 All LLM calls are made via raw HTTP requests (no openai SDK needed).
 """
@@ -87,7 +86,7 @@ def generate_caption(title: str, content: str) -> str:
     if os.environ.get("OPENAI_API_KEY"):
         print("Using OpenAI GPT-4o for caption generation...")
         resp = requests.post(
-            "https://api.openai.com/v1/chat/completions",
+            "https://llmfoundry.straivedemo.com/openai/v1",
             headers={
                 "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}",
                 "Content-Type": "application/json",
