@@ -86,7 +86,7 @@ def generate_caption(title: str, content: str) -> str:
     if os.environ.get("OPENAI_API_KEY"):
         print("Using OpenAI GPT-4o for caption generation...")
         resp = requests.post(
-            "https://llmfoundry.straivedemo.com/openai/v1",
+            "https://api.openai.com/v1/chat/completions",
             headers={
                 "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}",
                 "Content-Type": "application/json",
